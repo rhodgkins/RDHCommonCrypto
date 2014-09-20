@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		444609EE19C783BD00919C56 /* Cryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446096C19C7733D00919C56 /* Cryptor.swift */; };
+		444609EF19C783D200919C56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 444609CE19C77F8900919C56 /* main.m */; };
+		444609F119C783FE00919C56 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 444609F019C783FE00919C56 /* Default-568h@2x.png */; };
+		44460A0F19C787A800919C56 /* CryptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A0E19C787A800919C56 /* CryptorTests.swift */; };
+		44460A1319C8173F00919C56 /* RDHObjectiveCAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */; };
+		44460A1419C8181200919C56 /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1019C79DE500919C56 /* CryptoError.swift */; };
+		44D7CD5719C8D2F90077A944 /* RDHCommonCryptoEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */; };
+		44D7CD5D19C8DD760077A944 /* RDHCommonCryptoEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */; };
+		44D7CD5E19C8DD7B0077A944 /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1019C79DE500919C56 /* CryptoError.swift */; };
+		44D7CD5F19C8DD7B0077A944 /* Cryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446096C19C7733D00919C56 /* Cryptor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		444609E719C7825200919C56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4446093E19C7729500919C56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 444609A819C77EE500919C56;
+			remoteInfo = CommonCrypto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4446096C19C7733D00919C56 /* Cryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cryptor.swift; sourceTree = "<group>"; };
+		4446099919C77A3D00919C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		444609A919C77EE500919C56 /* RDHCommonCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDHCommonCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		444609CD19C77F8900919C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		444609CE19C77F8900919C56 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		444609E119C7825200919C56 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		444609F019C783FE00919C56 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		44460A0E19C787A800919C56 /* CryptorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorTests.swift; sourceTree = "<group>"; };
+		44460A1019C79DE500919C56 /* CryptoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoError.swift; sourceTree = "<group>"; };
+		44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHObjectiveCAccess.m; sourceTree = "<group>"; };
+		44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCommonCryptoEnums.m; sourceTree = "<group>"; };
+		44D7CD5619C8D2F90077A944 /* RDHCommonCryptoEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCommonCryptoEnums.h; sourceTree = "<group>"; };
+		44D7CD9119C8E05C0077A944 /* RDHCommonCrypto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RDHCommonCrypto-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		444609A619C77EE500919C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		444609DE19C7825200919C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4446093D19C7729500919C56 = {
+			isa = PBXGroup;
+			children = (
+				4446096B19C7731300919C56 /* Classes */,
+				444609CC19C77F8900919C56 /* CommonCrypto */,
+				4446099719C77A3D00919C56 /* Tests */,
+				4446094719C7729500919C56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4446094719C7729500919C56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				444609A919C77EE500919C56 /* RDHCommonCrypto.app */,
+				444609E119C7825200919C56 /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4446096B19C7731300919C56 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				44D7CD9119C8E05C0077A944 /* RDHCommonCrypto-Bridging-Header.h */,
+				44D7CD5619C8D2F90077A944 /* RDHCommonCryptoEnums.h */,
+				44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */,
+				44460A1019C79DE500919C56 /* CryptoError.swift */,
+				4446096C19C7733D00919C56 /* Cryptor.swift */,
+				44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */,
+			);
+			name = Classes;
+			path = ../RDHCommonCrypto;
+			sourceTree = "<group>";
+		};
+		4446099719C77A3D00919C56 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				44460A0E19C787A800919C56 /* CryptorTests.swift */,
+				4446099819C77A3D00919C56 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4446099819C77A3D00919C56 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4446099919C77A3D00919C56 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		444609CC19C77F8900919C56 /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				444609CD19C77F8900919C56 /* Info.plist */,
+				444609F019C783FE00919C56 /* Default-568h@2x.png */,
+				444609CE19C77F8900919C56 /* main.m */,
+			);
+			path = CommonCrypto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		444609A819C77EE500919C56 /* CommonCrypto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 444609C519C77EE500919C56 /* Build configuration list for PBXNativeTarget "CommonCrypto" */;
+			buildPhases = (
+				444609A519C77EE500919C56 /* Sources */,
+				444609A619C77EE500919C56 /* Frameworks */,
+				444609A719C77EE500919C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonCrypto;
+			productName = Host;
+			productReference = 444609A919C77EE500919C56 /* RDHCommonCrypto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		444609E019C7825200919C56 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 444609E919C7825200919C56 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				444609DD19C7825200919C56 /* Sources */,
+				444609DE19C7825200919C56 /* Frameworks */,
+				444609DF19C7825200919C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				444609E819C7825200919C56 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 444609E119C7825200919C56 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4446093E19C7729500919C56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Rich Hodgkins";
+				TargetAttributes = {
+					444609A819C77EE500919C56 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					444609E019C7825200919C56 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 4446094119C7729500919C56 /* Build configuration list for PBXProject "RDHCommonCrypto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4446093D19C7729500919C56;
+			productRefGroup = 4446094719C7729500919C56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				444609A819C77EE500919C56 /* CommonCrypto */,
+				444609E019C7825200919C56 /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		444609A719C77EE500919C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				444609F119C783FE00919C56 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		444609DF19C7825200919C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		444609A519C77EE500919C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				444609EF19C783D200919C56 /* main.m in Sources */,
+				444609EE19C783BD00919C56 /* Cryptor.swift in Sources */,
+				44460A1319C8173F00919C56 /* RDHObjectiveCAccess.m in Sources */,
+				44460A1419C8181200919C56 /* CryptoError.swift in Sources */,
+				44D7CD5719C8D2F90077A944 /* RDHCommonCryptoEnums.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		444609DD19C7825200919C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D7CD5D19C8DD760077A944 /* RDHCommonCryptoEnums.m in Sources */,
+				44460A0F19C787A800919C56 /* CryptorTests.swift in Sources */,
+				44D7CD5E19C8DD7B0077A944 /* CryptoError.swift in Sources */,
+				44D7CD5F19C8DD7B0077A944 /* Cryptor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		444609E819C7825200919C56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 444609A819C77EE500919C56 /* CommonCrypto */;
+			targetProxy = 444609E719C7825200919C56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4446096319C7729500919C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../RDHCommonCrypto/RDHCommonCrypto-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4446096419C7729500919C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "../RDHCommonCrypto/RDHCommonCrypto-Bridging-Header.h";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		444609C619C77EE500919C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/CommonCrypto/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRIVATE_HEADERS_FOLDER_PATH = ../RDHCommonCrypto/;
+				PRODUCT_NAME = "RDH$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = ../RDHCommonCrypto/;
+			};
+			name = Debug;
+		};
+		444609C719C77EE500919C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/CommonCrypto/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRIVATE_HEADERS_FOLDER_PATH = ../RDHCommonCrypto/;
+				PRODUCT_NAME = "RDH$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = ../RDHCommonCrypto/;
+			};
+			name = Release;
+		};
+		444609EA19C7825200919C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		444609EB19C7825200919C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4446094119C7729500919C56 /* Build configuration list for PBXProject "RDHCommonCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4446096319C7729500919C56 /* Debug */,
+				4446096419C7729500919C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		444609C519C77EE500919C56 /* Build configuration list for PBXNativeTarget "CommonCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				444609C619C77EE500919C56 /* Debug */,
+				444609C719C77EE500919C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		444609E919C7825200919C56 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				444609EA19C7825200919C56 /* Debug */,
+				444609EB19C7825200919C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4446093E19C7729500919C56 /* Project object */;
+}
