@@ -24,9 +24,15 @@ public func secureRandomData(withLength: Int) -> NSData? {
     return status ? data : nil
 }
 
+// Don't extend NSObject as there are no instance methods
 @objc public class Random {
     
-    /// @returns random data of length
+    /// Cannot instantiate this class
+    private init() {
+        assertionFailure("KeyDerivation cannot be instantiated")
+    }
+    
+    /// Uses CCRandomGenerateBytes if available (needs iOS 8.0/OSX 10.10) otherwise uses SecRandomCopyBytes. @returns random data of length
     @objc public class func secureRandomDataWithLength(length: Int) -> NSData? {
         return secureRandomData(length)
     }

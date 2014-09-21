@@ -39,10 +39,11 @@ private extension RDHPseudoRandomAlgorithm {
     }
 }
 
-@objc public class KeyDerivation: NSObject {
+// Don't extend NSObject as there are no instance methods
+@objc public class KeyDerivation {
     
     /// Cannot instantiate this class
-    private override init() {
+    private init() {
         assertionFailure("KeyDerivation cannot be instantiated")
     }
     
