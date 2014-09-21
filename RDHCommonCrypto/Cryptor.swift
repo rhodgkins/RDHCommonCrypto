@@ -167,7 +167,7 @@ public struct Option
             var cryptor: CCCryptorRef = nil
             // Creator a cryptor
 
-            let status = cryptoBlock {
+            let status = RDHStatus.statusForOperation {
                 CCCryptorCreate(operation, algorithm, options, key.bytes, ccKeyLength, ccIV, &cryptor)
             }
             if (status != RDHStatus.Success) {
@@ -213,7 +213,7 @@ public struct Option
         self.init({
             var cryptor: CCCryptorRef = nil
             // Creator a cryptor
-            let status = cryptoBlock {
+            let status = RDHStatus.statusForOperation {
                 CCCryptorCreateFromData(operation, algorithm, options, key.bytes, ccKeyLength, ccIV, ccData, UInt(ccDataLength), &cryptor, &dataUsed)
             }
             
@@ -226,7 +226,7 @@ public struct Option
                 memoryLocation.length = ccDataLength
                 
                 // Try creating a cryptor again
-                let repeatedStatus = cryptoBlock {
+                let repeatedStatus = RDHStatus.statusForOperation {
                     CCCryptorCreateFromData(operation, algorithm, options, key.bytes, ccKeyLength, ccIV, ccData, UInt(ccDataLength), &cryptor, &dataUsed)
                 }
                 
@@ -263,7 +263,7 @@ public struct Option
         self.init({
             var cryptor: CCCryptorRef = nil
             // Create a cryptor
-            let status = cryptoBlock {
+            let status = RDHStatus.statusForOperation {
                 CCCryptorCreateWithMode(operation, mode, algorithm, padding, ccIV, key.bytes, ccKeyLength, ccTweak, ccTweakLength, Int32(numberOfRounds), 0, &cryptor)
             }
             
@@ -446,7 +446,7 @@ public struct Option
         let ccIV = (initialisationVector != nil) ? initialisationVector!.bytes : nil
         
         // Crypto operation
-        let status = cryptoBlock {
+        let status = RDHStatus.statusForOperation {
             CCCryptorReset(self.cryptor, ccIV)
         }
         
@@ -571,12 +571,6 @@ public struct Option
         }
         return status ? data : nil
     }
-}
-
-/// Closure that converts a crypto operation status
-private func cryptoBlock(block: () -> CCStatus) -> RDHStatus {
-    let intStatus = block()
-    return RDHStatus.fromInt(intStatus)
 }
 
 /// Closure that can return and clean up the data

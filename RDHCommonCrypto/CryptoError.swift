@@ -8,6 +8,8 @@
 
 import Foundation
 
+let RDHCommonCryptoErrorDomain = "RDHCommonCryptoErrorDomain"
+
 extension RDHStatus {
     
     func error() -> NSError? {
@@ -46,11 +48,17 @@ extension RDHStatus {
                 message = nil
         }
         
-        return NSError(domain: "", code: Int(self.toRaw()), userInfo: (message != nil) ? [NSLocalizedDescriptionKey : message!] : nil)
+        return NSError(domain: RDHCommonCryptoErrorDomain, code: Int(self.toRaw()), userInfo: (message != nil) ? [NSLocalizedDescriptionKey : message!] : nil)
     }
     
     static func fromInt(intStatus: CCStatus) -> RDHStatus {
         
         return fromRaw(intStatus) ?? .Unknown
+    }
+    
+    /// Closure that converts a crypto operation status
+    static func statusForOperation(block: () -> CCStatus) -> RDHStatus {
+        let intStatus = block()
+        return RDHStatus.fromInt(intStatus)
     }
 }
