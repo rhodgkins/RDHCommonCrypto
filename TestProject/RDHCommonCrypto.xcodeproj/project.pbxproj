@@ -12,6 +12,8 @@
 		443191D719CF4D5600AA8E14 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191D619CF4D5600AA8E14 /* Random.swift */; };
 		443191D819CF4D5600AA8E14 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191D619CF4D5600AA8E14 /* Random.swift */; };
 		443191DA19CF500E00AA8E14 /* RandomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191D919CF500E00AA8E14 /* RandomTests.swift */; };
+		443191DC19CF58C600AA8E14 /* SymmetricKeyWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191DB19CF58C600AA8E14 /* SymmetricKeyWrap.swift */; };
+		443191DD19CF58C600AA8E14 /* SymmetricKeyWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191DB19CF58C600AA8E14 /* SymmetricKeyWrap.swift */; };
 		444609EE19C783BD00919C56 /* Cryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446096C19C7733D00919C56 /* Cryptor.swift */; };
 		444609EF19C783D200919C56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 444609CE19C77F8900919C56 /* main.m */; };
 		444609F119C783FE00919C56 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 444609F019C783FE00919C56 /* Default-568h@2x.png */; };
@@ -41,6 +43,7 @@
 		443191D419CEEF0000AA8E14 /* KeyDerivationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDerivationTests.swift; sourceTree = "<group>"; };
 		443191D619CF4D5600AA8E14 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		443191D919CF500E00AA8E14 /* RandomTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomTests.swift; sourceTree = "<group>"; };
+		443191DB19CF58C600AA8E14 /* SymmetricKeyWrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymmetricKeyWrap.swift; sourceTree = "<group>"; };
 		4446096C19C7733D00919C56 /* Cryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cryptor.swift; sourceTree = "<group>"; };
 		4446099919C77A3D00919C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		444609A919C77EE500919C56 /* RDHCommonCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDHCommonCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +106,7 @@
 				4446096C19C7733D00919C56 /* Cryptor.swift */,
 				448B312819CECB05005905D9 /* KeyDerivation.swift */,
 				443191D619CF4D5600AA8E14 /* Random.swift */,
+				443191DB19CF58C600AA8E14 /* SymmetricKeyWrap.swift */,
 			);
 			name = Classes;
 			path = ../RDHCommonCrypto;
@@ -237,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				444609EF19C783D200919C56 /* main.m in Sources */,
+				443191DC19CF58C600AA8E14 /* SymmetricKeyWrap.swift in Sources */,
 				444609EE19C783BD00919C56 /* Cryptor.swift in Sources */,
 				443191D219CED9F300AA8E14 /* RDHObjectiveCAccess.m in Sources */,
 				44460A1419C8181200919C56 /* CryptoError.swift in Sources */,
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				443191DD19CF58C600AA8E14 /* SymmetricKeyWrap.swift in Sources */,
 				443191DA19CF500E00AA8E14 /* RandomTests.swift in Sources */,
 				44D7CD5D19C8DD760077A944 /* RDHCommonCryptoEnums.m in Sources */,
 				44460A0F19C787A800919C56 /* CryptorTests.swift in Sources */,

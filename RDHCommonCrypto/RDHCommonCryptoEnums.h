@@ -179,6 +179,14 @@ typedef NS_ENUM(CCPseudoRandomAlgorithm, RDHPseudoRandomAlgorithm) {
 };
 
 
+#pragma mark - SymmetricKeyWrap
+
+typedef NS_ENUM(CCWrappingAlgorithm, RDHWrappingAlgorithm) {
+    /// AES Keywrapping (rfc3394)
+    RDHWrappingAlgorithmAES = kCCWRAPAES
+};
+
+
 #pragma mark - CryptoError
 
 /// Return values from CommonCryptor operations.
