@@ -160,6 +160,25 @@ typedef NS_ENUM(CCMode, RDHMode) {
     RDHModeCFB8 = kCCModeCFB8
 };
 
+
+#pragma mark - KeyDerivation
+
+/// Public key derivation function algorithms.
+typedef NS_ENUM(CCPBKDFAlgorithm, RDHPBKDFAlgorithm) {
+    /// Version 2
+    RDHPBKDFAlgorithmPBKDF2 = kCCPBKDF2
+};
+
+/// The Pseudo Random Algorithms used for the derivation iterations.
+typedef NS_ENUM(CCPseudoRandomAlgorithm, RDHPseudoRandomAlgorithm) {
+    RDHPseudoRandomAlgorithmHmacAlgSHA1 = kCCPRFHmacAlgSHA1,
+    RDHPseudoRandomAlgorithmHmacAlgSHA224 = kCCPRFHmacAlgSHA224,
+    RDHPseudoRandomAlgorithmHmacAlgSHA256 = kCCPRFHmacAlgSHA256,
+    RDHPseudoRandomAlgorithmHmacAlgSHA384 = kCCPRFHmacAlgSHA384,
+    RDHPseudoRandomAlgorithmHmacAlgSHA512 = kCCPRFHmacAlgSHA512
+};
+
+
 #pragma mark - CryptoError
 
 /// Return values from CommonCryptor operations.
