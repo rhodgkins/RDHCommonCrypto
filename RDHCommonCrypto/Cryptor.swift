@@ -239,6 +239,13 @@ public struct Option
         let cryptor = cryptorCreationBlock()
         // Unwrap to see if the backing pointer is nil (NULL) if it is then use nil and unwrap again to raise a fatal error
         self.cryptor = ((cryptor!) != nil ? cryptor : nil)!
+        
+//        if (cryptor!) != nil {
+//            self.cryptor = cryptor
+//        } else {
+//            self.cryptor = nil
+//            // TODO: eventually return nil
+//        }
     }
     
     deinit {
@@ -509,9 +516,14 @@ public struct Option
         assert(length >= 0, "Length must be greater or equal than 0")
         
         let data = NSMutableData(length: length)
-        let status = SecRandomCopyBytes(kSecRandomDefault, UInt(length), UnsafeMutablePointer<UInt8>(data.mutableBytes))
         
-        return status == 0 ? data : nil
+        var status = false
+        if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
+            status = CCRandomGenerateBytes(data.mutableBytes, UInt(length)) == CCRNGStatus(kCCSuccess)
+        } else {
+            status = SecRandomCopyBytes(kSecRandomDefault, UInt(length), UnsafeMutablePointer<UInt8>(data.mutableBytes)) == 0
+        }
+        return status ? data : nil
     }
 }
 
