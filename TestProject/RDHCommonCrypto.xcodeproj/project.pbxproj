@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443191D219CED9F300AA8E14 /* RDHObjectiveCAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 443191D119CED9F300AA8E14 /* RDHObjectiveCAccess.m */; };
+		443191D519CEEF0000AA8E14 /* KeyDerivationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443191D419CEEF0000AA8E14 /* KeyDerivationTests.swift */; };
 		444609EE19C783BD00919C56 /* Cryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446096C19C7733D00919C56 /* Cryptor.swift */; };
 		444609EF19C783D200919C56 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 444609CE19C77F8900919C56 /* main.m */; };
 		444609F119C783FE00919C56 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 444609F019C783FE00919C56 /* Default-568h@2x.png */; };
 		44460A0F19C787A800919C56 /* CryptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A0E19C787A800919C56 /* CryptorTests.swift */; };
-		44460A1319C8173F00919C56 /* RDHObjectiveCAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */; };
 		44460A1419C8181200919C56 /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1019C79DE500919C56 /* CryptoError.swift */; };
+		448B312919CECB05005905D9 /* KeyDerivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B312819CECB05005905D9 /* KeyDerivation.swift */; };
+		448B312A19CECB05005905D9 /* KeyDerivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B312819CECB05005905D9 /* KeyDerivation.swift */; };
 		44D7CD5719C8D2F90077A944 /* RDHCommonCryptoEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */; };
 		44D7CD5D19C8DD760077A944 /* RDHCommonCryptoEnums.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */; };
 		44D7CD5E19C8DD7B0077A944 /* CryptoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44460A1019C79DE500919C56 /* CryptoError.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		443191D119CED9F300AA8E14 /* RDHObjectiveCAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHObjectiveCAccess.m; sourceTree = "<group>"; };
+		443191D319CEDA4E00AA8E14 /* RDHObjectiveCAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RDHObjectiveCAccess.h; sourceTree = "<group>"; };
+		443191D419CEEF0000AA8E14 /* KeyDerivationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDerivationTests.swift; sourceTree = "<group>"; };
 		4446096C19C7733D00919C56 /* Cryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cryptor.swift; sourceTree = "<group>"; };
 		4446099919C77A3D00919C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		444609A919C77EE500919C56 /* RDHCommonCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RDHCommonCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,7 +45,7 @@
 		444609F019C783FE00919C56 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		44460A0E19C787A800919C56 /* CryptorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptorTests.swift; sourceTree = "<group>"; };
 		44460A1019C79DE500919C56 /* CryptoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoError.swift; sourceTree = "<group>"; };
-		44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHObjectiveCAccess.m; sourceTree = "<group>"; };
+		448B312819CECB05005905D9 /* KeyDerivation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDerivation.swift; sourceTree = "<group>"; };
 		44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDHCommonCryptoEnums.m; sourceTree = "<group>"; };
 		44D7CD5619C8D2F90077A944 /* RDHCommonCryptoEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDHCommonCryptoEnums.h; sourceTree = "<group>"; };
 		44D7CD9119C8E05C0077A944 /* RDHCommonCrypto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RDHCommonCrypto-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 				44D7CD5519C8D2F90077A944 /* RDHCommonCryptoEnums.m */,
 				44460A1019C79DE500919C56 /* CryptoError.swift */,
 				4446096C19C7733D00919C56 /* Cryptor.swift */,
-				44460A1219C8173F00919C56 /* RDHObjectiveCAccess.m */,
+				448B312819CECB05005905D9 /* KeyDerivation.swift */,
 			);
 			name = Classes;
 			path = ../RDHCommonCrypto;
@@ -100,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				44460A0E19C787A800919C56 /* CryptorTests.swift */,
+				443191D419CEEF0000AA8E14 /* KeyDerivationTests.swift */,
 				4446099819C77A3D00919C56 /* Supporting Files */,
 			);
 			path = Tests;
@@ -119,6 +126,8 @@
 				444609CD19C77F8900919C56 /* Info.plist */,
 				444609F019C783FE00919C56 /* Default-568h@2x.png */,
 				444609CE19C77F8900919C56 /* main.m */,
+				443191D319CEDA4E00AA8E14 /* RDHObjectiveCAccess.h */,
+				443191D119CED9F300AA8E14 /* RDHObjectiveCAccess.m */,
 			);
 			path = CommonCrypto;
 			sourceTree = "<group>";
@@ -222,8 +231,9 @@
 			files = (
 				444609EF19C783D200919C56 /* main.m in Sources */,
 				444609EE19C783BD00919C56 /* Cryptor.swift in Sources */,
-				44460A1319C8173F00919C56 /* RDHObjectiveCAccess.m in Sources */,
+				443191D219CED9F300AA8E14 /* RDHObjectiveCAccess.m in Sources */,
 				44460A1419C8181200919C56 /* CryptoError.swift in Sources */,
+				448B312919CECB05005905D9 /* KeyDerivation.swift in Sources */,
 				44D7CD5719C8D2F90077A944 /* RDHCommonCryptoEnums.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +244,8 @@
 			files = (
 				44D7CD5D19C8DD760077A944 /* RDHCommonCryptoEnums.m in Sources */,
 				44460A0F19C787A800919C56 /* CryptorTests.swift in Sources */,
+				443191D519CEEF0000AA8E14 /* KeyDerivationTests.swift in Sources */,
+				448B312A19CECB05005905D9 /* KeyDerivation.swift in Sources */,
 				44D7CD5E19C8DD7B0077A944 /* CryptoError.swift in Sources */,
 				44D7CD5F19C8DD7B0077A944 /* Cryptor.swift in Sources */,
 			);
