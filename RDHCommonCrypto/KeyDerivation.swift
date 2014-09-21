@@ -67,7 +67,7 @@ private extension RDHPseudoRandomAlgorithm {
     /// Instead of specifiying the number of rounds a duration can be provided.
     class func PBKDFWithAlgorithm(algorithm: RDHPBKDFAlgorithm, usingPassword password: String!, withSalt salt: NSData?, pseudoRandomAlgorithm prf: RDHPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int? = nil) -> (derivedKey: NSData?, error: NSError?) {
         
-        let rounds = CalibratePBKDFWithAlgorithm(algorithm, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: targettedDuration, derivedKeyLength: derivedKeyLength)
+        let rounds = calibratePBKDFWithAlgorithm(algorithm, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: targettedDuration, derivedKeyLength: derivedKeyLength)
         
         return PBKDFWithAlgorithm(RDHPBKDFAlgorithm.PBKDF2, usingPassword: password, withSalt: salt, pseudoRandomAlgorithm: prf, numberOfRounds: rounds, derivedKeyLength: derivedKeyLength)
     }
@@ -120,23 +120,23 @@ private extension RDHPseudoRandomAlgorithm {
     // MARK: - PBKDF2: Round calibration
     
     /// @returns the number of iterations to use for the desired processing time when using PBKDF2.
-    public class func CalibratePBKDF2UsingPassword(password: String!, salt: NSData?, pseudoRandomAlgorithm prf: RDHPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int? = nil) -> Int {
+    public class func calibratePBKDF2UsingPassword(password: String!, salt: NSData?, pseudoRandomAlgorithm prf: RDHPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int? = nil) -> Int {
 
-        return CalibratePBKDFWithAlgorithm(RDHPBKDFAlgorithm.PBKDF2, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: targettedDuration, derivedKeyLength: derivedKeyLength)
+        return calibratePBKDFWithAlgorithm(RDHPBKDFAlgorithm.PBKDF2, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: targettedDuration, derivedKeyLength: derivedKeyLength)
     }
     
     // MARK: - Generic PBKDF: Round calibration
     
     /// @returns the number of iterations to use for the desired processing time.
-    public class func CalibratePBKDFWithAlgorithm(algorithm: RDHPBKDFAlgorithm, password: String!, salt: NSData?, pseudoRandomAlgorithm prf: RDHPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int? = nil) -> Int {
+    public class func calibratePBKDFWithAlgorithm(algorithm: RDHPBKDFAlgorithm, password: String!, salt: NSData?, pseudoRandomAlgorithm prf: RDHPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int? = nil) -> Int {
         
         var usedDerivedKeyLength = derivedKeyLength ?? prf.defaultDerivedKeyLength
         
-        return CalibratePBKDFWithAlgorithm(algorithm.toRaw(), password: password, salt: salt, pseudoRandomAlgorithm: prf.toRaw(), targettedDuration: targettedDuration, derivedKeyLength: usedDerivedKeyLength)
+        return calibratePBKDFWithAlgorithm(algorithm.toRaw(), password: password, salt: salt, pseudoRandomAlgorithm: prf.toRaw(), targettedDuration: targettedDuration, derivedKeyLength: usedDerivedKeyLength)
     }
     
     /// Objective-C method. Marked as internal for Swift as there is a Swift specific function. @returns the number of iterations to use for the desired processing time.
-    @objc class func CalibratePBKDFWithAlgorithm(algorithm: CCPBKDFAlgorithm, password: String!, salt: NSData?, pseudoRandomAlgorithm prf: CCPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int) -> Int {
+    @objc class func calibratePBKDFWithAlgorithm(algorithm: CCPBKDFAlgorithm, password: String!, salt: NSData?, pseudoRandomAlgorithm prf: CCPseudoRandomAlgorithm, targettedDuration: NSTimeInterval, derivedKeyLength: Int) -> Int {
         
         assert(derivedKeyLength > 0, "The expected derived key length must be greater than 0: \(derivedKeyLength)")
         assert(targettedDuration > 0, "The targetted duration must be greater than 0: \(targettedDuration)")

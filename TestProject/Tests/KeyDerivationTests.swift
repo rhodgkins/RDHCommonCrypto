@@ -65,7 +65,7 @@ class KeyDerivationTests: XCTestCase {
                     // Calibration
                     
                     // Swift
-                    let actualRounds = KeyDerivation.CalibratePBKDFWithAlgorithm(alg, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: duration, derivedKeyLength: derivedKeyLength)
+                    let actualRounds = KeyDerivation.calibratePBKDFWithAlgorithm(alg, password: password, salt: salt, pseudoRandomAlgorithm: prf, targettedDuration: duration, derivedKeyLength: derivedKeyLength)
                     
                     // C API
                     let expectedRounds = Int(CCCalibratePBKDF(alg.toRaw(), strlen(password), UInt(salt?.length ?? 0), prf.toRaw(), UInt(derivedKeyLength), durationMS))
