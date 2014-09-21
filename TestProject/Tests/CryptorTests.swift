@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import UIKit
 
 import RDHCommonCrypto
 
@@ -19,7 +18,7 @@ class CryptorTests: XCTestCase {
     // MARK: - Cryptor: encryption
     
     func testCryptorEncryptionWithEmptyKeyAndEmptyData() {
-
+        
         // Without IV
         cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, NSData(), NSData(), self.name)
         // With IV
