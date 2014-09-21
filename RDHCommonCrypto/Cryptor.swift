@@ -188,6 +188,8 @@ public struct Option
     /// Init with data for Objective-C. Marked as internal for Swift as there is a Swift specific init.
     @objc convenience init(operation: CCOperation, algorithm: CCAlgorithm, options: CCOptions, key: NSData, initialisationVector: NSData?, returningDataForMemory location: AutoreleasingUnsafeMutablePointer<NSMutableData?>)
     {
+        assert(location != nil, "returningDataForMemory must be specified")
+        
         // Key
         let ccKeyLength = UInt(key.length)
         
