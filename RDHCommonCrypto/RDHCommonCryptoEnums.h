@@ -10,6 +10,10 @@
 
 @import Foundation;
 
+/**
+ * This file contains all of the CommonCrypto enums which have been correctly defined so they can be used in Swift.
+ */
+
 #pragma mark - Cryptor
 
 /// Encryption algorithms implemented by this module.
@@ -44,7 +48,7 @@ typedef NS_ENUM(CCAlgorithm, RDHAlgorithm)
  * AES has three discrete key sizes.
  * CAST and RC4 have variable key sizes.
  */
-typedef enum : NSUInteger
+typedef enum : NSInteger
 {
     /// 128 bit AES key size.
     RDHKeySizeAES128 = kCCKeySizeAES128,
@@ -75,7 +79,7 @@ typedef enum : NSUInteger
 } RDHKeySize;
 
 /// Block sizes, in bytes, for supported algorithms.
-typedef enum : NSUInteger
+typedef enum : NSInteger
 {
     /// AES block size (currently, only 128-bit blocks are supported).
     RDHBlockSizeAES128 = kCCBlockSizeAES128,
@@ -102,7 +106,7 @@ typedef enum : NSUInteger
  *
  * See discussion for the CCCryptorCreateFromData() function.
  */
-typedef enum : NSUInteger
+typedef enum : NSInteger
 {
     /// Minimum context size for kCCAlgorithmAES128.
     RDHContextSizeAES128 = kCCContextSizeAES128,
@@ -116,8 +120,7 @@ typedef enum : NSUInteger
     RDHContextSizeRC4 = kCCContextSizeRC4
 } RDHContextSize;
 
-// TODO: correct comments below
-/// Options flags, passed to CCCryptorCreate().
+/// Options flags, passed to Cryptor.
 typedef NS_OPTIONS(uint32_t, RDHCryptorOption) {
     /// Perform PKCS7 padding.
     RDHCryptorOptionPKCS7Padding = kCCOptionPKCS7Padding,

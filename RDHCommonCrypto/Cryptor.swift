@@ -34,17 +34,17 @@ private extension CCAlgorithm
             case kCCAlgorithmAES:
                 fallthrough
             case kCCAlgorithmAES128:
-                return kCCBlockSizeAES128
+                return RDHBlockSizeAES128.value
             case kCCAlgorithmDES:
-                return kCCBlockSizeDES
+                return RDHBlockSizeDES.value
             case kCCAlgorithm3DES:
-                return kCCBlockSize3DES
+                return RDHBlockSizeTripleDES.value
             case kCCAlgorithmCAST:
-                return kCCBlockSizeCAST
+                return RDHBlockSizeCAST.value
             case kCCAlgorithmRC2:
-                return kCCBlockSizeRC2
+                return RDHBlockSizeRC2.value
             case kCCAlgorithmBlowfish:
-                return kCCBlockSizeBlowfish
+                return RDHBlockSizeBlowfish.value
             case kCCAlgorithmRC4:
                 // Stream ciphers have no block size
                 return 0
@@ -52,12 +52,41 @@ private extension CCAlgorithm
                 return 0
         }
     }
+    
+    private func contextSize() -> Int {
+        switch(Int(self)) {
+        case kCCAlgorithmAES:
+            fallthrough
+        case kCCAlgorithmAES128:
+            return RDHContextSizeAES128.value
+        case kCCAlgorithmDES:
+            return RDHContextSizeDES.value
+        case kCCAlgorithm3DES:
+            return RDHContextSizeTripleDES.value
+        case kCCAlgorithmCAST:
+            return RDHContextSizeCAST.value
+        case kCCAlgorithmRC4:
+            return RDHContextSizeRC4.value
+        case kCCAlgorithmRC2:
+            return 128
+        case kCCAlgorithmBlowfish:
+            return 128
+        default:
+            return 0
+        }
+    }
 }
 
 private extension RDHAlgorithm
 {
+    /// @returns the block size for the algorithm
     private func blockSize() -> Int {
         return self.toRaw().blockSize()
+    }
+    
+    /// @returns the memory size needed to create the CryptorRef for the algorithm
+    private func contextSize() -> Int {
+        return self.toRaw().contextSize()
     }
 }
 
@@ -108,10 +137,12 @@ public struct Option
     }
 }
 
-@objc public class Cryptor {
+@objc public class Cryptor : NSObject {
     
     /// Explicity unwrapped optional as its required
-    let cryptor: CCCryptorRef!
+    private let cryptor: CCCryptorRef!
+    /// Only used when creating a Cryptor with data
+    private let memoryForCryptor: NSMutableData?
     
     // MARK: Cryptor objects
     
@@ -147,15 +178,15 @@ public struct Option
     }
     
     /// Init with data.
-    public convenience init(operation: Operation, algorithm: RDHAlgorithm, options: [Option]?, key: NSData, initialisationVector: NSData?, usingMemoryLocation location: NSMutableData!) {
+    public convenience init(operation: Operation, algorithm: RDHAlgorithm, options: [Option]?, key: NSData, initialisationVector: NSData?, inout returningDataForMemory location: NSMutableData?) {
         
         let ccOptions = Option.CCValue(options)
         
-        self.init(operation: operation.cValue(), algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector, usingMemoryLocation:location)
+        self.init(operation: operation.cValue(), algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector, returningDataForMemory: &location)
     }
     
     /// Init with data for Objective-C. Marked as internal for Swift as there is a Swift specific init.
-    @objc convenience init(operation: CCOperation, algorithm: CCAlgorithm, options: CCOptions, key: NSData, initialisationVector: NSData?, usingMemoryLocation location: NSMutableData!)
+    @objc convenience init(operation: CCOperation, algorithm: CCAlgorithm, options: CCOptions, key: NSData, initialisationVector: NSData?, returningDataForMemory location: AutoreleasingUnsafeMutablePointer<NSMutableData?>)
     {
         // Key
         let ccKeyLength = UInt(key.length)
@@ -165,9 +196,17 @@ public struct Option
         
         // Data used
         var dataUsed: UInt = 0
-        var ccDataLength = sizeof(CCCryptorRef)
-        location.length = ccDataLength
-        var ccData = location.bytes
+        var ccDataLength = algorithm.contextSize()
+        var memoryLocation: NSMutableData
+        // Use the data if some has been provided otherwise create some
+        if let actualLocal = location.memory {
+            memoryLocation = actualLocal
+            memoryLocation.length = ccDataLength
+        } else {
+            memoryLocation = NSMutableData(length: ccDataLength)
+        }
+        location.memory = memoryLocation
+        var ccData = memoryLocation.bytes
         
         self.init({
             var cryptor: CCCryptorRef = nil
@@ -177,13 +216,12 @@ public struct Option
             }
             
             if status == RDHStatus.Success {
-                location.length = Int(dataUsed)
+                memoryLocation.length = Int(dataUsed)
             } else if status == RDHStatus.BufferTooSmall {
                 
                 // Repeat with returned size
                 ccDataLength = Int(dataUsed)
-                location.length = ccDataLength
-                ccData = location.bytes
+                memoryLocation.length = ccDataLength
                 
                 // Try creating a cryptor again
                 let repeatedStatus = cryptoBlock {
@@ -191,14 +229,14 @@ public struct Option
                 }
                 
                 if repeatedStatus != RDHStatus.Success {
-                    location.length = Int(dataUsed)
+                    memoryLocation.length = Int(dataUsed)
                     cryptor = nil
                 }
             } else {
                 cryptor = nil
             }
             return cryptor
-        })
+        }, optionMemoryLocation: memoryLocation)
     }
     
     /// Init with mode.
@@ -235,11 +273,12 @@ public struct Option
     }
     
     /// Designated initialiser which sets the cryptor object to be used from the closure that creates one
-    private init(_ cryptorCreationBlock: () -> CCCryptorRef!) {
+    private init(_ cryptorCreationBlock: () -> CCCryptorRef!, optionMemoryLocation memoryForCryptor: NSMutableData? = nil) {
+        
         let cryptor = cryptorCreationBlock()
         // Unwrap to see if the backing pointer is nil (NULL) if it is then use nil and unwrap again to raise a fatal error
         self.cryptor = ((cryptor!) != nil ? cryptor : nil)!
-        
+        self.memoryForCryptor = memoryForCryptor
 //        if (cryptor!) != nil {
 //            self.cryptor = cryptor
 //        } else {
@@ -250,6 +289,11 @@ public struct Option
     
     deinit {
         CCCryptorRelease(self.cryptor)
+        if let actualMemory = self.memoryForCryptor {
+            // Zero out the memory
+            actualMemory.setData(NSMutableData(length: actualMemory.length))
+            actualMemory.length = 0
+        }
     }
     
     /// @returns the required output size for the specificed input length.
