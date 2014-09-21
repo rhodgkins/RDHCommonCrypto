@@ -16,7 +16,7 @@ public enum Operation : Int {
     /// Symmetric decryption.
     case Decrypt
     
-    private func cValue() -> CCOperation {
+    private var cValue: CCOperation {
         switch (self) {
             case .Encrypt:
                 return CCOperation(kCCEncrypt)
@@ -29,7 +29,7 @@ public enum Operation : Int {
 private extension CCAlgorithm
 {
     /// @returns the block size for the algorithm
-    private func blockSize() -> Int {
+    private var blockSize: Int {
         switch(Int(self)) {
             case kCCAlgorithmAES:
                 fallthrough
@@ -53,7 +53,7 @@ private extension CCAlgorithm
         }
     }
     
-    private func contextSize() -> Int {
+    private var contextSize: Int {
         switch(Int(self)) {
         case kCCAlgorithmAES:
             fallthrough
@@ -80,13 +80,13 @@ private extension CCAlgorithm
 private extension RDHAlgorithm
 {
     /// @returns the block size for the algorithm
-    private func blockSize() -> Int {
-        return self.toRaw().blockSize()
+    private var blockSize: Int {
+        return self.toRaw().blockSize
     }
     
     /// @returns the memory size needed to create the CryptorRef for the algorithm
-    private func contextSize() -> Int {
-        return self.toRaw().contextSize()
+    private var contextSize: Int {
+        return self.toRaw().contextSize
     }
 }
 
@@ -97,7 +97,7 @@ public extension CCAlgorithm
             // Stream cipher return nil
             return nil
         } else {
-            return Cryptor.randomDataWithLength(self.blockSize())
+            return Cryptor.randomDataWithLength(self.blockSize)
         }
     }
 }
@@ -137,7 +137,7 @@ public struct Option
     }
 }
 
-@objc public class Cryptor : NSObject {
+@objc public class Cryptor: NSObject {
     
     /// Explicity unwrapped optional as its required
     private let cryptor: CCCryptorRef!
@@ -151,7 +151,7 @@ public struct Option
         
         let ccOptions = Option.CCValue(options)
      
-        self.init(operation: operation.cValue(), algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector)
+        self.init(operation: operation.cValue, algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector)
     }
     
     /// Init for Objective-C. Marked as internal for Swift as there is a Swift specific init.
@@ -182,7 +182,7 @@ public struct Option
         
         let ccOptions = Option.CCValue(options)
         
-        self.init(operation: operation.cValue(), algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector, returningDataForMemory: &location)
+        self.init(operation: operation.cValue, algorithm: algorithm.toRaw(), options: ccOptions, key: key, initialisationVector: initialisationVector, returningDataForMemory: &location)
     }
     
     /// Init with data for Objective-C. Marked as internal for Swift as there is a Swift specific init.
@@ -198,7 +198,7 @@ public struct Option
         
         // Data used
         var dataUsed: UInt = 0
-        var ccDataLength = algorithm.contextSize()
+        var ccDataLength = algorithm.contextSize
         var memoryLocation: NSMutableData
         // Use the data if some has been provided otherwise create some
         if let actualLocal = location.memory {
@@ -244,7 +244,7 @@ public struct Option
     /// Init with mode.
     public convenience init(operation: Operation, mode: RDHMode, algorithm: RDHAlgorithm, padding: RDHPadding, key: NSData, initialisationVector: NSData?, tweakMaterial: NSData, numberOfRounds: Int = 0) {
         
-        self.init(operation: operation.cValue(), mode: mode.toRaw(), algorithm: algorithm.toRaw(), padding: padding.toRaw(), key: key, initialisationVector: initialisationVector, tweakMaterial: tweakMaterial, numberOfRounds: numberOfRounds)
+        self.init(operation: operation.cValue, mode: mode.toRaw(), algorithm: algorithm.toRaw(), padding: padding.toRaw(), key: key, initialisationVector: initialisationVector, tweakMaterial: tweakMaterial, numberOfRounds: numberOfRounds)
     }
     
     /// Init with mode for Objective-C. Marked as internal for Swift as there is a Swift specific init.
@@ -475,7 +475,7 @@ public struct Option
         let ccOptions = Option.CCValue(options)
 
         var resultantError: NSError?
-        let resultantData = cryptOperation(operation.cValue(), usingAlgorithm: algorithm.toRaw(), options: ccOptions, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: &resultantError)
+        let resultantData = cryptOperation(operation.cValue, usingAlgorithm: algorithm.toRaw(), options: ccOptions, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: &resultantError)
         
         return (dataOut: resultantData, error: resultantError)
     }
@@ -485,13 +485,13 @@ public struct Option
     /// Marked as internal for Swift as there is a Swift specific function. @returns the encrypted data, if this is nil then error is set.
     @objc class func encrypt(algorithm: CCAlgorithm, usingOptions options: CCOptions, key: NSData, initialisationVector: NSData?, dataIn: NSData, error: NSErrorPointer = nil) -> NSData? {
         
-        return cryptOperation(Operation.Encrypt.cValue(), usingAlgorithm: algorithm, options: options, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: error)
+        return cryptOperation(Operation.Encrypt.cValue, usingAlgorithm: algorithm, options: options, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: error)
     }
     
     /// Marked as internal for Swift as there is a Swift specific function. @returns the decrypted data, if this is nil then error is set.
     @objc class func decrypt(algorithm: CCAlgorithm, usingOptions options: CCOptions, key: NSData, initialisationVector: NSData?, dataIn: NSData, error: NSErrorPointer = nil) -> NSData? {
         
-        return cryptOperation(Operation.Decrypt.cValue(), usingAlgorithm: algorithm, options: options, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: error)
+        return cryptOperation(Operation.Decrypt.cValue, usingAlgorithm: algorithm, options: options, withKey: key, initialisationVector: initialisationVector, dataIn: dataIn, error: error)
     }
     
     /// Exposed as the root function - this matches the API of the C CCCrypt function. Marked as internal for Swift as there is a Swift specific function. @returns the out data, if this is nil then error is set.
@@ -509,7 +509,7 @@ public struct Option
         let ccDataInLength = UInt(dataIn.length)
         
         // Data out
-        let dataOutAvailable = ccDataInLength + algorithm.blockSize()
+        let dataOutAvailable = ccDataInLength + algorithm.blockSize
         var dataOut: NSMutableData? = NSMutableData(length: Int(dataOutAvailable))
         var dataOutMoved: UInt = 0
 
