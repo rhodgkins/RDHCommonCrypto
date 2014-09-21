@@ -568,26 +568,3 @@ private func cryptoBlockReturningData(block: () -> (CCStatus, NSMutableData?, UI
     
     return (status, resultSuccess, resultantError)
 }
-
-/// Checks if the the opertaion was succesful and then trims the data to the needed size. If there was an error success will be false with a error
-private func cleanUpOutData(dataOut: NSMutableData!, movedOutLength dataOutMoved: UInt, forResultStatus status: RDHStatus) -> (success: Bool, error: NSError?) {
-    
-    var success = false
-    var error: NSError? = nil
-    if status == RDHStatus.Success {
-        // Fix data to final length
-        dataOut.length = Int(dataOutMoved)
-        success = true
-    } else if status == RDHStatus.BufferTooSmall {
-        
-        // dataOutMoved now contains the needed size
-        dataOut.length = Int(dataOutMoved)
-        
-    } else {
-        error = status.error()
-        // Clear any out data
-        dataOut.length = 0
-    }
-    
-    return (success, error)
-}

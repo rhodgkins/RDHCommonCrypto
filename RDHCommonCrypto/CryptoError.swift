@@ -62,3 +62,26 @@ extension RDHStatus {
         return RDHStatus.fromInt(intStatus)
     }
 }
+
+/// Checks if the the operation was succesful and then trims the data to the needed size. If there was an error success will be false with a error
+func cleanUpOutData(dataOut: NSMutableData!, movedOutLength dataOutMoved: UInt, forResultStatus status: RDHStatus) -> (success: Bool, error: NSError?) {
+    
+    var success = false
+    var error: NSError? = nil
+    if status == RDHStatus.Success {
+        // Fix data to final length
+        dataOut.length = Int(dataOutMoved)
+        success = true
+    } else if status == RDHStatus.BufferTooSmall {
+        
+        // dataOutMoved now contains the needed size
+        dataOut.length = Int(dataOutMoved)
+        
+    } else {
+        error = status.error()
+        // Clear any out data
+        dataOut.length = 0
+    }
+    
+    return (success, error)
+}
