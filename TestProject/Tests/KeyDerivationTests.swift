@@ -24,7 +24,7 @@ class KeyDerivationTests: XCTestCase {
     
     func testPBKDF2Calibration() {
         
-        let rounds = KeyDerivation.CalibratePBKDF2UsingPassword(Password, salt: Salt, pseudoRandomAlgorithm: RDHPseudoRandomAlgorithm.HmacAlgSHA512, targettedDuration: 0.005)
+        let rounds = KeyDerivation.calibratePBKDF2UsingPassword(Password, salt: Salt, pseudoRandomAlgorithm: RDHPseudoRandomAlgorithm.HmacAlgSHA512, targettedDuration: 0.005)
         
         let (key, error) = KeyDerivation.PBKDFWithAlgorithm(RDHPBKDFAlgorithm.PBKDF2, usingPassword: Password, withSalt: Salt, pseudoRandomAlgorithm: RDHPseudoRandomAlgorithm.HmacAlgSHA1, numberOfRounds: rounds)
     }
