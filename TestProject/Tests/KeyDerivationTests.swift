@@ -11,7 +11,7 @@ import XCTest
 import RDHCommonCrypto
 
 let Password = "A password!"
-let Salt = Cryptor.randomDataWithLength(100)!
+let Salt = secureRandomData(100)!
 
 let TestCalibration = false
 
@@ -57,7 +57,7 @@ class KeyDerivationTests: XCTestCase {
                 let derivedKeyLength = random() % 128
                 
                 let password = randomStringWithLength(passwordLength)
-                let salt = Cryptor.randomDataWithLength(saltLength)
+                let salt = secureRandomData(saltLength)
                 let duration = 0.05
                 let durationMS = UInt32(ceil(duration * 1000.0))
                 

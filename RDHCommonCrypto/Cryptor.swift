@@ -97,7 +97,7 @@ public extension CCAlgorithm
             // Stream cipher return nil
             return nil
         } else {
-            return Cryptor.randomDataWithLength(self.blockSize)
+            return secureRandomData(self.blockSize)
         }
     }
 }
@@ -555,21 +555,6 @@ public struct Option
         }
         
         return dataOut
-    }
-    
-    /// @returns random data of length
-    @objc public class func randomDataWithLength(length: Int) -> NSData? {
-        assert(length >= 0, "Length must be greater or equal than 0")
-        
-        let data = NSMutableData(length: length)
-        
-        var status = false
-        if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
-            status = CCRandomGenerateBytes(data.mutableBytes, UInt(length)) == CCRNGStatus(kCCSuccess)
-        } else {
-            status = SecRandomCopyBytes(kSecRandomDefault, UInt(length), UnsafeMutablePointer<UInt8>(data.mutableBytes)) == 0
-        }
-        return status ? data : nil
     }
 }
 

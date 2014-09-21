@@ -10,8 +10,8 @@ import XCTest
 
 import RDHCommonCrypto
 
-let Key: NSData! = Cryptor.randomDataWithLength(kCCKeySizeAES256)
-let PlainTextInputData: NSData! = Cryptor.randomDataWithLength(997)
+let Key: NSData! = secureRandomData(kCCKeySizeAES256)
+let PlainTextInputData: NSData! = secureRandomData(997)
 
 class CryptorTests: XCTestCase {
     
@@ -22,7 +22,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, NSData(), NSData(), self.name)
         // With IV
-        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), NSData(), NSData(), "\(self.name) with IV")
+        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), NSData(), NSData(), "\(self.name) with IV")
     }
     
     func testCryptorEncryptionWithKeyAndEmptyData() {
@@ -30,7 +30,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, Key, NSData(), self.name)
         // With IV
-        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), Key, NSData(), "\(self.name) with IV")
+        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), Key, NSData(), "\(self.name) with IV")
     }
     
     func testCryptorEncryptionWithEmptyKeyAndData() {
@@ -38,7 +38,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, NSData(), PlainTextInputData, self.name)
         // With IV
-        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), NSData(), PlainTextInputData, "\(self.name) with IV")
+        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), NSData(), PlainTextInputData, "\(self.name) with IV")
     }
 
     func testCryptorEncryptionWithKeyAndData() {
@@ -46,7 +46,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, Key, PlainTextInputData, self.name)
         // With IV
-        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), Key, PlainTextInputData, "\(self.name) with IV")
+        cryptorTestsEncrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), Key, PlainTextInputData, "\(self.name) with IV")
     }
     
     func testAllEncryptions() {
@@ -89,8 +89,8 @@ class CryptorTests: XCTestCase {
                     dataInLength = align(dataInLength)
                 }
                 
-                let key: NSData! = Cryptor.randomDataWithLength(keySize)
-                let inData: NSData! = Cryptor.randomDataWithLength(dataInLength)
+                let key: NSData! = secureRandomData(keySize)
+                let inData: NSData! = secureRandomData(dataInLength)
                 let iv = CCAlgorithm(alg).randomIV()
                 
                 let message = "Testing \(algKey) of \(key.length) with \(optKey)"
@@ -185,7 +185,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, NSData(), NSData(), self.name)
         // With IV
-        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), NSData(), NSData(), "\(self.name) with IV")
+        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), NSData(), NSData(), "\(self.name) with IV")
     }
     
     func testCryptorDecryptionWithKeyAndEmptyData() {
@@ -193,7 +193,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, Key, NSData(), self.name)
         // With IV
-        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), Key, NSData(), "\(self.name) with IV")
+        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), Key, NSData(), "\(self.name) with IV")
     }
     
     func testCryptorDecryptionWithEmptyKeyAndData() {
@@ -201,7 +201,7 @@ class CryptorTests: XCTestCase {
         // Without IV
         cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, nil, NSData(), PlainTextInputData, self.name)
         // With IV
-        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, Cryptor.randomDataWithLength(kCCBlockSizeAES128), NSData(), PlainTextInputData, "\(self.name) with IV")
+        cryptorTestsDecrypt(kCCAlgorithmAES, kCCOptionPKCS7Padding, secureRandomData(kCCBlockSizeAES128), NSData(), PlainTextInputData, "\(self.name) with IV")
     }
     
     func testCryptorDecryptionWithKeyAndData() {
@@ -209,8 +209,8 @@ class CryptorTests: XCTestCase {
         let algorithm = kCCAlgorithmAES
         let options = kCCOptionPKCS7Padding
         
-        let iv = Cryptor.randomDataWithLength(kCCBlockSizeAES128)
-        let key = Cryptor.randomDataWithLength(kCCKeySizeAES256)!
+        let iv = secureRandomData(kCCBlockSizeAES128)
+        let key = secureRandomData(kCCKeySizeAES256)!
         let plainTextData = PlainTextInputData
         
         // Without IV
@@ -259,8 +259,8 @@ class CryptorTests: XCTestCase {
                     dataInLength = align(dataInLength)
                 }
                 
-                let key: NSData! = Cryptor.randomDataWithLength(keySize)
-                let inData: NSData! = Cryptor.randomDataWithLength(dataInLength)
+                let key: NSData! = secureRandomData(keySize)
+                let inData: NSData! = secureRandomData(dataInLength)
                 let iv = CCAlgorithm(alg).randomIV()
                 
                 let message = "Testing decryption \(algKey) of \(key.length) with \(optKey)"
